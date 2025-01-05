@@ -30,7 +30,7 @@ struct SPLINEALONGSURFACE_API FSplineAlongSurfaceParams
 	float TangentLength = 10.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float MaxHeightOfObstacle = 10.f;
+	float MaxHeightOfObstacle = 50.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bOnlyPolyLine = false;
