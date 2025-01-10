@@ -4,6 +4,8 @@
 #include "BaseTools/EditorScriptableSingleClickTool.h"
 #include "SplineAlongSurfaceDrawTool.generated.h"
 
+class ASplineAlongSurface;
+
 /**
  * 
  */
@@ -13,6 +15,9 @@ class EDITORSPLINEALONGSURFACE_API USplineAlongSurfaceDrawTool : public UEditorS
 	GENERATED_BODY()
 	
 protected:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<ASplineAlongSurface> SplineActor;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UScriptableInteractiveToolPropertySet> PropertySet;
