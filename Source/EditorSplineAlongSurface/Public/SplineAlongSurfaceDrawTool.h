@@ -17,6 +17,9 @@ class EDITORSPLINEALONGSURFACE_API USplineAlongSurfaceDrawTool : public UEditorS
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<ASplineAlongSurface> SplineActorClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<ASplineAlongSurface> SplineActor;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
