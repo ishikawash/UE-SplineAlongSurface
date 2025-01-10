@@ -14,6 +14,10 @@ class EDITORSPLINEALONGSURFACE_API USplineAlongSurfaceDrawTool : public UEditorS
 {
 	GENERATED_BODY()
 	
+public:
+
+	virtual void Shutdown(EToolShutdownType ShutdownType) override;
+
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
