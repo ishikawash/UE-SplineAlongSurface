@@ -16,6 +16,23 @@ void USplineAlongSurfaceDrawTool::Shutdown(EToolShutdownType ShutdownType)
     }
 }
 
+ASplineAlongSurface* USplineAlongSurfaceDrawTool::SpawnSplineActor(const FVector& WorldLocation)
+{
+    if (IsValid(SplineActor))
+    {
+        return SplineActor;
+    }
+    if (!IsValid(SplineActorClass))
+    {
+        return nullptr;
+    }
+    
+    FTransform WorldTransform;
+    WorldTransform.SetLocation(WorldLocation);
+    SplineActor = GetWorld()->SpawnActor<ASplineAlongSurface>(SplineActorClass.Get(), WorldTransform);
+    return SplineActor;
+}
+
 void USplineAlongSurfaceDrawTool::InputSurfacePoint(const FVector& WorldLocation, const FVector& WorldNormal, bool bRunConstructionScripts)
 {
     if (!IsValid(SplineActor))
