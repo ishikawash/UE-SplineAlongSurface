@@ -30,6 +30,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UScriptableInteractiveToolPropertySet> PropertySet;
 
+	void HandleOnHitClickEvent(FInputDeviceRay ClickPos, const FScriptableToolModifierStates& Modifiers);
+
 	UFUNCTION(BlueprintCallable, Category = "SplineAlongSurface|DrawTool")
 	ASplineAlongSurface* SpawnSplineActor(const FVector& WorldLocation);
 

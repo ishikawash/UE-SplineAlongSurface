@@ -28,6 +28,11 @@ void USplineAlongSurfaceDrawTool::Shutdown(EToolShutdownType ShutdownType)
 
 void USplineAlongSurfaceDrawTool::OnHitByClick_Implementation(FInputDeviceRay ClickPos, const FScriptableToolModifierStates& Modifiers)
 {
+    HandleOnHitClickEvent(ClickPos, Modifiers);
+}
+
+void USplineAlongSurfaceDrawTool::HandleOnHitClickEvent(FInputDeviceRay ClickPos, const FScriptableToolModifierStates& Modifiers)
+{
     FVector Start;
     FVector End;
     SplineAlongSurfaceDrawTool::Private::GetRayStartEnd(ClickPos.WorldRay, Start, End);
