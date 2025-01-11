@@ -17,6 +17,7 @@ class EDITORSPLINEALONGSURFACE_API USplineAlongSurfaceDrawTool : public UEditorS
 public:
 
 	virtual void Shutdown(EToolShutdownType ShutdownType) override;
+	virtual void OnHitByClick_Implementation(FInputDeviceRay ClickPos, const FScriptableToolModifierStates& Modifiers) override;
 
 protected:
 

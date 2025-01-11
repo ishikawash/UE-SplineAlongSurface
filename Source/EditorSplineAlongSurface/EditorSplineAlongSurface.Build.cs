@@ -7,6 +7,6 @@ public class EditorSplineAlongSurface : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine" });
-		PrivateDependencyModuleNames.AddRange(new string[] { "InteractiveToolsFramework", "ScriptableToolsFramework", "EditorScriptableToolsFramework", "SplineAlongSurface" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "GeometryScriptingCore", "InteractiveToolsFramework", "ScriptableToolsFramework", "EditorScriptableToolsFramework", "SplineAlongSurface" });
 	}
 }
