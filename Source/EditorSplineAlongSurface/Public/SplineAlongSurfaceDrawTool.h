@@ -28,4 +28,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UScriptableInteractiveToolPropertySet> PropertySet;
+
+	UFUNCTION(BlueprintCallable, Category = "SplineAlongSurface|DrawTool")
+	void InputSurfacePoint(const FVector& WorldLocation, const FVector& WorldNormal, bool bRunConstructionScripts = false);
+
+	void InputSurfacePointWithoutTransaction(const FVector& WorldLocation, const FVector& WorldNormal, bool bRunConstructionScripts);
 };

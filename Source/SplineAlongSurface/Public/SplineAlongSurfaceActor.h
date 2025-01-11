@@ -13,6 +13,10 @@ class SPLINEALONGSURFACE_API ASplineAlongSurface : public AActor
 public:
 	ASplineAlongSurface();
 
+	USplineComponent* GetSpline() { return Spline.Get(); }
+
+	TArray<FSurfacePoint>& GetSurfacePoints() { return SurfacePoints; }
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TObjectPtr<USplineComponent> Spline;
