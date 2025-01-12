@@ -15,7 +15,7 @@ SplineAlongSurface has been tested with UE 5.4.4.
 ## Usage
 Switch the edit mode to **[Scriptable Tool Mode]**.
 
-Select **[Draw Spline Along]** Surface from CustomTools.
+Select **[Draw Spline Along Surface]** from CustomTools.
 
 Click the mouse along the surface of the mesh placed on the level. 
 Control points are automatically created and you can draw splines.
