@@ -16,6 +16,7 @@ class EDITORSPLINEALONGSURFACE_API USplineAlongSurfaceDrawTool : public UEditorS
 	
 public:
 
+	virtual void Setup() override;
 	virtual void Shutdown(EToolShutdownType ShutdownType) override;
 	virtual void OnHitByClick_Implementation(FInputDeviceRay ClickPos, const FScriptableToolModifierStates& Modifiers) override;
 
@@ -39,4 +40,9 @@ protected:
 	void InputSurfacePoint(const FVector& WorldLocation, const FVector& WorldNormal, bool bRunConstructionScripts = false);
 
 	void InputSurfacePointWithoutTransaction(const FVector& WorldLocation, const FVector& WorldNormal, bool bRunConstructionScripts);
+
+private:
+
+	UFUNCTION()
+	void OnSplineActorClassChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, UObject* NewValue);
 };

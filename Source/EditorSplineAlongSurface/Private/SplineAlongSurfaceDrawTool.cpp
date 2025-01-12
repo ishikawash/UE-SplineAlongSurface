@@ -4,6 +4,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "SplineAlongSurface_Functions.h"
 #include "SplineAlongSurfaceActor.h"
+#include "SplineAlongSurfacePropertySet.h"
 
 namespace SplineAlongSurfaceDrawTool::Private
 {
@@ -13,9 +14,30 @@ namespace SplineAlongSurfaceDrawTool::Private
     }
 }
 
+void USplineAlongSurfaceDrawTool::Setup()
+{
+    UEditorScriptableSingleClickTool::Setup();
+
+    FString Identifier = TEXT("DrawToolSettings");
+    EToolsFrameworkOutcomePins Outcome;
+    PropertySet = AddPropertySetOfType(USplineAlongSurfacePropertySet::StaticClass(), Identifier, Outcome);
+    if (PropertySet == nullptr)
+    {
+        return;
+    }
+
+    {
+        FToolObjectPropertyModifiedDelegate EventObserver;
+        EventObserver.BindUFunction(this, FName(TEXT("OnSplineActorClassChanged")));
+        WatchObjectProperty(PropertySet, TEXT("SplineActorClass"), EventObserver);
+    }
+
+    // TODO: Call Watch***Property.
+}
+
 void USplineAlongSurfaceDrawTool::Shutdown(EToolShutdownType ShutdownType)
 {
-    UScriptableInteractiveTool::Shutdown(ShutdownType);
+    UEditorScriptableSingleClickTool::Shutdown(ShutdownType);
 
     if (ShutdownType == EToolShutdownType::Cancel)
     {
@@ -116,4 +138,10 @@ void USplineAlongSurfaceDrawTool::InputSurfacePointWithoutTransaction(const FVec
     {
         SplineActor->RerunConstructionScripts();
     }
+}
+
+void USplineAlongSurfaceDrawTool::OnSplineActorClassChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, UObject* NewValue)
+{
+    UClass* NewClass = Cast<UClass>(NewValue);
+    SplineActorClass = NewClass;
 }
