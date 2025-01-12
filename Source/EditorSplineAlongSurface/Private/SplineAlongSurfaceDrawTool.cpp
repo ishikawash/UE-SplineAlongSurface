@@ -31,8 +31,26 @@ void USplineAlongSurfaceDrawTool::Setup()
         EventObserver.BindUFunction(this, FName(TEXT("OnSplineActorClassChanged")));
         WatchObjectProperty(PropertySet, TEXT("SplineActorClass"), EventObserver);
     }
-
-    // TODO: Call Watch***Property.
+    {
+        FToolFloatPropertyModifiedDelegate EventObserver;
+        EventObserver.BindUFunction(this, FName(TEXT("OnDistanceFromSurfaceChanged")));
+        WatchFloatProperty(PropertySet, TEXT("DistanceFromSurface"), EventObserver);
+    }
+    {
+        FToolFloatPropertyModifiedDelegate EventObserver;
+        EventObserver.BindUFunction(this, FName(TEXT("OnTangentLengthChanged")));
+        WatchFloatProperty(PropertySet, TEXT("TangentLength"), EventObserver);
+    }
+    {
+        FToolFloatPropertyModifiedDelegate EventObserver;
+        EventObserver.BindUFunction(this, FName(TEXT("OnMaxHeightOfObstacleChanged")));
+        WatchFloatProperty(PropertySet, TEXT("MaxHeightOfObstacle"), EventObserver);
+    }
+    {
+        FToolBoolPropertyModifiedDelegate EventObserver;
+        EventObserver.BindUFunction(this, FName(TEXT("OnOnlyPolyLineChanged")));
+        WatchBoolProperty(PropertySet, TEXT("OnlyPolyLine"), EventObserver);
+    }
 }
 
 void USplineAlongSurfaceDrawTool::Shutdown(EToolShutdownType ShutdownType)
@@ -144,4 +162,48 @@ void USplineAlongSurfaceDrawTool::OnSplineActorClassChanged(UScriptableInteracti
 {
     UClass* NewClass = Cast<UClass>(NewValue);
     SplineActorClass = NewClass;
+}
+
+void USplineAlongSurfaceDrawTool::OnDistanceFromSurfaceChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, double NewValue)
+{
+    if (IsValid(SplineActor))
+    {
+        FSplineAlongSurfaceParams& Params = SplineActor->GetParams();
+        Params.DistanceFromSurface = NewValue;
+
+        SplineActor->RerunConstructionScripts();
+    }
+}
+
+void USplineAlongSurfaceDrawTool::OnTangentLengthChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, double NewValue)
+{
+    if (IsValid(SplineActor))
+    {
+        FSplineAlongSurfaceParams& Params = SplineActor->GetParams();
+        Params.TangentLength = NewValue;
+
+        SplineActor->RerunConstructionScripts();
+    }
+}
+
+void USplineAlongSurfaceDrawTool::OnMaxHeightOfObstacleChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, double NewValue)
+{
+    if (IsValid(SplineActor))
+    {
+        FSplineAlongSurfaceParams& Params = SplineActor->GetParams();
+        Params.MaxHeightOfObstacle = NewValue;
+
+        SplineActor->RerunConstructionScripts();
+    }
+}
+
+void USplineAlongSurfaceDrawTool::OnOnlyPolyLineChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, bool NewValue)
+{
+    if (IsValid(SplineActor))
+    {
+        FSplineAlongSurfaceParams& Params = SplineActor->GetParams();
+        Params.bOnlyPolyLine = NewValue;
+
+        SplineActor->RerunConstructionScripts();
+    }
 }

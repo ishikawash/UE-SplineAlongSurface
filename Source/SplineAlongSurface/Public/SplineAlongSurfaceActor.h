@@ -17,6 +17,8 @@ public:
 
 	TArray<FSurfacePoint>& GetSurfacePoints() { return SurfacePoints; }
 
+	FSplineAlongSurfaceParams& GetParams() { return SplineAlongSurfaceParams; }
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TObjectPtr<USplineComponent> Spline;

@@ -45,4 +45,16 @@ private:
 
 	UFUNCTION()
 	void OnSplineActorClassChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, UObject* NewValue);
+
+	UFUNCTION()
+	void OnDistanceFromSurfaceChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, double NewValue);
+
+	UFUNCTION()
+	void OnTangentLengthChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, double NewValue);
+
+	UFUNCTION()
+	void OnMaxHeightOfObstacleChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, double NewValue);
+
+	UFUNCTION()
+	void OnOnlyPolyLineChanged(UScriptableInteractiveToolPropertySet* TargetPropertySet, FString PropertyName, bool NewValue);
 };
