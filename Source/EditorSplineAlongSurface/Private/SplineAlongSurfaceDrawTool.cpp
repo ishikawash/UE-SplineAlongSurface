@@ -14,6 +14,12 @@ namespace SplineAlongSurfaceDrawTool::Private
     }
 }
 
+USplineAlongSurfaceDrawTool::USplineAlongSurfaceDrawTool()
+{
+    ToolName = FText::FromString(TEXT("Draw Spline Along Surface"));
+    ToolTooltip = ToolName;
+}
+
 void USplineAlongSurfaceDrawTool::Setup()
 {
     UEditorScriptableSingleClickTool::Setup();
