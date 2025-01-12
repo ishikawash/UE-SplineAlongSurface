@@ -18,6 +18,7 @@ USplineAlongSurfaceDrawTool::USplineAlongSurfaceDrawTool()
 {
     ToolName = FText::FromString(TEXT("Draw Spline Along Surface"));
     ToolTooltip = ToolName;
+    ToolShutdownType = EScriptableToolShutdownType::AcceptCancel;
 }
 
 void USplineAlongSurfaceDrawTool::Setup()
