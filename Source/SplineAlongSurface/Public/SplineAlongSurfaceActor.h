@@ -13,7 +13,7 @@ class SPLINEALONGSURFACE_API ASplineAlongSurface : public AActor
 public:
 	ASplineAlongSurface();
 
-	USplineComponent* GetSpline() { return Spline.Get(); }
+	USplineComponent* GetSplineComponent() { return Spline.Get(); }
 
 	TArray<FSurfacePoint>& GetSurfacePoints() { return SurfacePoints; }
 

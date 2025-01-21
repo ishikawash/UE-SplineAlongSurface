@@ -148,12 +148,12 @@ void USplineAlongSurfaceDrawTool::InputSurfacePointWithoutTransaction(const FVec
     {
         return;
     }
-    if (SplineActor->GetSpline() == nullptr)
+    if (SplineActor->GetSplineComponent() == nullptr)
     {
         return;
     }
  
-    FTransform WorldTransform = SplineActor->GetSpline()->GetComponentToWorld();
+    FTransform WorldTransform = SplineActor->GetSplineComponent()->GetComponentToWorld();
     FVector LocalLocation = WorldTransform.InverseTransformPosition(WorldLocation);
     FVector LocalNormal = WorldTransform.InverseTransformVectorNoScale(WorldNormal);
     FSurfacePoint SurfacePoint = { LocalLocation, LocalNormal };
