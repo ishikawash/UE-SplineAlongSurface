@@ -67,7 +67,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "SplineAlongSurface|Functions")
 	static void BuildSplineAlongSurface(USplineComponent* Spline, const TArray<FSurfacePoint>& SurfacePoints, const FSplineAlongSurfaceParams& Params);
-
-	UFUNCTION(BlueprintCallable, Category = "SplineAlongSurface|Functions")
-	static void RunConstructionScripts(AActor* Actor);
 };

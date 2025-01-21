@@ -403,11 +403,3 @@ void USplineAlongSurface_Functions::BuildSplineAlongSurface(USplineComponent* Sp
 
     BuildCurve(Spline, PolyLinePoints, Params.TangentLength);
 }
-
-void USplineAlongSurface_Functions::RunConstructionScripts(AActor* Actor)
-{
-    if (IsValid(Actor))
-    {
-        Actor->RerunConstructionScripts();
-    }
-}
